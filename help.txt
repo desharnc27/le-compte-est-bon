@@ -1,0 +1,24 @@
+The first argument should be the 6 terms seperated by comma.
+
+You can also have a second argument (arguments are separated by spaces), which is the target value.
+
+With that second argument, the program will print a way of combining the terms to reach the target value.
+
+Without a second argument, the program will print a way of reaching every possible target value.
+
+In both cases, the program also prints the number of different ways you can reach required target value(s), but without displaying every way in detail.
+You can read "counting.txt" for more information on the counting number. 
+
+ex:
+
+java central.LeCompteEstBon 2,4,7,12,17,77 43
+
+output:
+
+77-(17*(12/((7-4)*2)))
+=77-(17*(12/(3*2)))
+=77-(17*(12/6))
+=77-(17*2)
+=77-34
+=43
+Number of possibilities: 1601

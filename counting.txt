@@ -1,0 +1,24 @@
+The definition of "Number of possibilities" used in this project has some fog that we need to clear out. So let's detail our definition below.
+
+We need to define what combinations are considered identical and which ones are considered distinct.
+
+Commutativity: identical
+
+Swapping the two terms of a commutative opertion (+,x) does not change the combinations. x + y and y + x are considered equivalent and thus make for only one possibility.
+
+Associativity: distinct
+
+Modifying the bracketing around three terms combined with two sums or two multiplications produces different possibilities. Hence, (a + b) + c, (a + c) + b, and (c + b) + a are three different combinations.
+
+Identical terms: distinct
+
+In the specific case where the terms contain 2 identical values, they are treated as different terms.
+
+Ex:
+java LeCompteEstBon 3,3,7 18
+
+This counts for two possibilites: (3_A * 7) - 3_B and  (3_B * 7) - 3_A, where A and B are used to distinguish the two 3s.
+
+Other specifications:
+
+Possibilities in which a negative number  is created, even temporairly, are not counted (considered as illegal). Ex: ....(5 - 7) + 6... is not ok since 5 - 7 = -2 and we should not have any negative value at any step, even if the next step would immediately remove the negativity.
