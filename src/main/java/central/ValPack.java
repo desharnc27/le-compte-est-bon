@@ -27,8 +27,10 @@ class ValPack implements Comparable<ValPack> {
         this.val = val;
         nbPoss = 1;
     }
+
     /**
      * Creates a new valPack by combining two valpacks with a specific operation
+     *
      * @param vp0 a valpack
      * @param vp1 another valpack
      * @param op an operation
@@ -40,9 +42,10 @@ class ValPack implements Comparable<ValPack> {
         val = op.apply(ancestor0.val, ancestor1.val);
         this.nbPoss = vp0.nbPoss * vp1.nbPoss;
     }
+
     /**
-     * 
-     * @param vp0 
+     *
+     * @param vp0
      */
     public void increasePossibilityCount(ValPack vp0) {
         nbPoss += vp0.nbPoss;

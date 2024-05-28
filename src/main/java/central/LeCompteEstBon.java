@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -136,82 +134,85 @@ public class LeCompteEstBon {
         //urk.printFullLast();
         urk.bank[63].printOneComboWithSteps(14);
     }
-    
+
     //input management
-    
     public static boolean subMain(String[] args) {
         Statix.initialize();
-        
-        if (args.length == 0){
+
+        if (args.length == 0) {
             System.out.println("Fail: Arguments required. Aborted");
             return false;
         }
 
-        if (args.length > 2){
+        if (args.length > 2) {
             System.out.println("Fail: Too much arguments. Aborted");
             return false;
         }
-        if (args[0].equals("mytest")){
+        if (args[0].equals("mytest")) {
             MyMainInCode();
             return true;
         }
-        if (args[0].equals("help")){
+        if (args[0].equals("help")) {
             displayHelp();
             return true;
         }
-        String [] numberStrs = args[0].split(",");
-        int [] numbers = new int[numberStrs.length];
-        try{
+        String[] numberStrs = args[0].split(",");
+        int[] numbers = new int[numberStrs.length];
+        try {
             int idx = 0;
-            for (String str:numberStrs)
-                numbers[idx++]= Integer.parseInt(str);
-            
-        }catch(NumberFormatException e){
+            for (String str : numberStrs) {
+                numbers[idx++] = Integer.parseInt(str);
+            }
+
+        } catch (NumberFormatException e) {
             System.out.println("Fail: Invalid first argument: " + args[0]);
             System.out.println("First argument should be all the terms separated with commas (no space)");
             System.out.println("Every term must be a non-negative integer.");
             return false;
         }
-        
+
         int target = -1;
-        if (args.length == 2){
-            try{
+        if (args.length == 2) {
+            try {
                 target = Integer.parseInt(args[1]);
-                if (target<0)
+                if (target < 0) {
                     throw new NumberFormatException();
-            }catch(NumberFormatException e){
+                }
+            } catch (NumberFormatException e) {
                 System.out.println("Fail: Invalid second argument: " + args[1]);
                 System.out.println("It should be a non-negative number (or unexistent)");
                 return false;
             }
         }
         //All validations completed
-        
+
         LeCompteEstBon ob = new LeCompteEstBon(numbers);
         ob.doAll();
-        if (target < 0){
+        if (target < 0) {
             ob.printFullLast();
-        }else{
+        } else {
             ob.printOneComboWithSteps(target);
         }
         return true;
-            
+
     }
-    public static void displayHelp(){
+
+    public static void displayHelp() {
         String root = Statix.getRoot();
-        String helpPath = String.join(File.separator,root,"help.txt");
+        String helpPath = String.join(File.separator, root, "help.txt");
         Path filePath = Path.of(helpPath);
         try {
             String content = Files.readString(filePath);
             System.out.println(content);
         } catch (IOException ex) {
-            System.out.println("Oups! Program bug! No help file found: "+ helpPath);
+            System.out.println("Oups! Program bug! No help file found: " + helpPath);
         }
-        
+
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         boolean ok = subMain(args);
-        if (!ok){
+        if (!ok) {
             System.out.println("Note: you may enter \"help\" as argument for help on arguments.");
         }
     }

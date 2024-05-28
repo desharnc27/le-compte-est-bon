@@ -83,6 +83,7 @@ class State {
 
     /**
      * Prints a combo that outputs val
+     *
      * @param val the value to reach
      */
     public void printOneCombo(int val) {
@@ -93,8 +94,10 @@ class State {
         }
         System.out.println(valList.get(idx).getDetailedStrPossibility());
     }
+
     /**
      * Prints a combo that outputs val, with the step by steps operation
+     *
      * @param val the value to reach
      */
     public void printOneComboWithSteps(int val) {
@@ -116,6 +119,7 @@ class State {
         System.out.println("Number of possibilities: " + root.getNbPoss());
 
     }
+
     /**
      * Prints how much possible combos lead to every value
      */

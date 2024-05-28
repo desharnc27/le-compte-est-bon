@@ -33,8 +33,10 @@ public class Operation {
         this.isMultOrDiv = isMultOrDiv;
         this.isCommutative = isCommutative;
     }
+
     /**
      * Applies operation between two numbers
+     *
      * @param a a number
      * @param b another number
      * @return the result of the operation between a and b
@@ -60,9 +62,12 @@ public class Operation {
             return a - b;
         }
     }
+
     /**
      * returns the the operation as a char
-     * @return 'x','/','+' or '-', depending on the operation type of this object
+     *
+     * @return 'x','/','+' or '-', depending on the operation type of this
+     * object
      */
     public char symb() {
         if (isMultOrDiv && isCommutative) {
